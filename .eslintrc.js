@@ -1,3 +1,4 @@
+/* eslint-env node */
 module.exports = {
   env: {
     browser: true,
@@ -16,6 +17,6 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint", "unused-imports"],
+  plugins: ["react", "@typescript-eslint"],
   rules: {},
 }
