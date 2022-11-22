@@ -1,0 +1,6 @@
+{
+  "semi": false,
+	"importOrder": ["^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
