@@ -1,6 +1,7 @@
 import { Box, Button, Center, Container, Flex } from "@chakra-ui/react"
-import { calculateWinner } from "lib/ticTacToe"
 import { useState } from "react"
+
+import { calculateWinner } from "lib/ticTacToe"
 
 function Square({
   value,

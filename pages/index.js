@@ -2,7 +2,7 @@ import { Link } from "@chakra-ui/react"
 import Head from "next/head"
 import NextLink from "next/link"
 
-import styles from "../styles/Home.module.css"
+import styles from "styles/Home.module.css"
 
 export default function Home() {
   return (
@@ -15,6 +15,9 @@ export default function Home() {
       <main className={styles.main}>
         <NextLink href="ticTacToe" legacyBehavior passHref>
           <Link>Play Tic Tac Toe</Link>
+        </NextLink>
+				<NextLink href="form" legacyBehavior passHref>
+          <Link>Sign-up (WIP)</Link>
         </NextLink>
       </main>
     </div>
