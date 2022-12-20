@@ -1,9 +1,14 @@
 import { Box, Button, Center, Container, Flex } from "@chakra-ui/react"
+import { calculateWinner } from "lib/ticTacToe"
 import { useState } from "react"
 
-import { calculateWinner } from "./utils"
-
-function Square({ value, onClick }) {
+function Square({
+  value,
+  onClick,
+}: {
+  value: number
+  onClick: (e: React.MouseEvent<HTMLElement>) => void
+}) {
   return (
     <Button
       border="1px"
@@ -19,7 +24,13 @@ function Square({ value, onClick }) {
   )
 }
 
-function Board({ squares, onClick }) {
+function Board({
+  squares,
+  onClick,
+}: {
+  squares: number[]
+  onClick: (e: React.MouseEvent<HTMLElement>) => void
+}) {
   function renderSquare(i) {
     return <Square value={squares[i]} onClick={() => onClick(i)} />
   }

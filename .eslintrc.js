@@ -9,6 +9,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:@typescript-eslint/recommended",
+    "plugin:@next/next/recommended",
     "prettier",
   ],
   overrides: [],
@@ -19,4 +20,5 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint"],
   rules: {},
+  settings: { react: { version: "detect" } },
 }
