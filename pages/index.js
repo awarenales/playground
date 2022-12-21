@@ -16,7 +16,7 @@ export default function Home() {
         <NextLink href="ticTacToe" legacyBehavior passHref>
           <Link>Play Tic Tac Toe</Link>
         </NextLink>
-				<NextLink href="form" legacyBehavior passHref>
+        <NextLink href="form" legacyBehavior passHref>
           <Link>Sign-up (WIP)</Link>
         </NextLink>
       </main>

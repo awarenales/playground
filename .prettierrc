@@ -1,11 +1,6 @@
 {
-	"semi": false,
-	"importOrder": [
-		"^components/",
-		"^lib/",
-		"^styles/",
-		"^[./]"
-	],
-	"importOrderSeparation": true,
-	"importOrderSortSpecifiers": true
+  "semi": false,
+  "importOrder": ["^components/", "^lib/", "^styles/", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }
