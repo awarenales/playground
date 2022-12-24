@@ -1,7 +1,7 @@
-import { Box, Button, Center, Container, Flex } from "@chakra-ui/react"
-import { useState } from "react"
+import { Box, Button, Center, Container, Flex } from '@chakra-ui/react'
+import { useState } from 'react'
 
-import { calculateWinner } from "lib/ticTacToe"
+import { calculateWinner } from 'lib/ticTacToe'
 
 function Square({
   value,
@@ -30,9 +30,9 @@ function Board({
   onClick,
 }: {
   squares: number[]
-  onClick: (e: React.MouseEvent<HTMLElement>) => void
+  onClick: (i: number) => void
 }) {
-  function renderSquare(i) {
+  function renderSquare(i: number) {
     return <Square value={squares[i]} onClick={() => onClick(i)} />
   }
 
@@ -62,20 +62,20 @@ export default function Game() {
   const [stepNumber, setStepNumber] = useState(0)
   const [xIsNext, setXIsNext] = useState(true)
 
-  function handleClick(i) {
+  function handleClick(i: number) {
     const newHistory = history.slice(0, stepNumber + 1)
     const current = newHistory[newHistory.length - 1]
     const squares = current.squares.slice()
     if (calculateWinner(squares) || squares[i]) {
       return
     }
-    squares[i] = xIsNext ? "X" : "O"
+    squares[i] = xIsNext ? 'X' : 'O'
     setHistory(newHistory.concat([{ squares }]))
     setStepNumber(newHistory.length)
     setXIsNext(!xIsNext)
   }
 
-  function jumpTo(step) {
+  function jumpTo(step: number) {
     setStepNumber(step)
     setXIsNext(step % 2 === 0)
   }
@@ -84,7 +84,7 @@ export default function Game() {
   const winner = calculateWinner(current.squares)
 
   const moves = history.map((step, move) => {
-    const desc = move ? "Go to move #" + move : "Go to game start"
+    const desc = move ? 'Go to move #' + move : 'Go to game start'
     return (
       <li key={move}>
         <Button onClick={() => jumpTo(move)}>{desc}</Button>
@@ -96,7 +96,7 @@ export default function Game() {
   if (winner) {
     status = `Winner: ${winner}`
   } else {
-    status = `Next player: ${xIsNext ? "X" : "O"}`
+    status = `Next player: ${xIsNext ? 'X' : 'O'}`
   }
 
   return (

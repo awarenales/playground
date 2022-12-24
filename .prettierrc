@@ -1,6 +1,7 @@
 {
   "semi": false,
-  "importOrder": ["^components/", "^lib/", "^styles/", "^[./]"],
+  "singleQuote": true,
+  "importOrder": ["^atoms/", "^components/", "^lib/", "^styles/", "^[./]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true
 }

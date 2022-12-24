@@ -1,90 +1,44 @@
-import { Box, Button, Container, Grid, GridItem } from "@chakra-ui/react"
+import { Box, Button, Container, Flex, Heading } from '@chakra-ui/react'
+import { useAtom } from 'jotai'
 
-import { Form, Input } from "components/Form/index"
+import { userAtom, userLocationAtom } from 'atoms/user'
 
-type FormValues = {
-  name: string
-  email: string
-  address: {
-    country: string
-    state: string
-    city: string
-    cep: string
-    street: string
-    number: string
-    complement: string
-  }
-  cpf: string
-  pis: string
-  password: string
-}
+import UserForm from './User'
+import VisitorForm from './Visitor'
 
 export default function Page() {
-  const onSubmit = (data: FormValues) => console.log(data)
+  const [userLocation, setUserLocation] = useAtom(userLocationAtom)
+  const [user, setUser] = useAtom(userAtom)
 
-  return (
-    <Container>
-      <Box my={5}>
-        <Form<FormValues> onSubmit={onSubmit}>
-          {({ register }) => (
-            <Grid templateColumns="repeat(6, 1fr)" gap={3}>
-              <GridItem colSpan={6}>
-                <Input {...register("name")} />
-              </GridItem>
-              <GridItem colSpan={6}>
-                <Input {...register("email")} autoComplete="email" />
-              </GridItem>
-              <GridItem colSpan={3}>
-                <Input {...register("address.country")} />
-              </GridItem>
-              <GridItem colSpan={3}>
-                <Input {...register("address.state")} />
-              </GridItem>
-              <GridItem colSpan={4}>
-                <Input {...register("address.city")} />
-              </GridItem>
-              <GridItem colSpan={2}>
-                <Input {...register("address.cep")} />
-              </GridItem>
-              <GridItem colSpan={{ base: 6, lg: 4 }}>
-                <Input {...register("address.street")} />
-              </GridItem>
-              <GridItem colSpan={{ base: 3, lg: 1 }}>
-                <Input {...register("address.number")} />
-              </GridItem>
-              <GridItem colSpan={{ base: 3, lg: 1 }}>
-                <Input {...register("address.complement")} />
-              </GridItem>
-              <GridItem colSpan={3}>
-                <Input {...register("cpf")} />
-              </GridItem>
-              <GridItem colSpan={3}>
-                <Input {...register("pis")} />
-              </GridItem>
-              <GridItem colSpan={{ base: 6, lg: 4 }}>
-                <Input
-                  {...register("password")}
-                  type="password"
-                  autoComplete="new-password"
-                />
-              </GridItem>
-              {/* <Select
-                {...register("sex")}
-                options={[
-                  { label: "Female", value: "female" },
-                  { label: "Male", value: "male" },
-                  { label: "Other", value: "other" },
-                ]}
-              /> */}
-              <GridItem colSpan={6} mt={3}>
-                <Button colorScheme={"teal"} type="submit">
-                  Submit
-                </Button>
-              </GridItem>
-            </Grid>
-          )}
-        </Form>
-      </Box>
-    </Container>
-  )
+  function handleEdit() {
+    setUserLocation('1_registering')
+  }
+
+  function handleLogOut() {
+    setUserLocation('0_visitor')
+    setUser({})
+  }
+
+  switch (userLocation) {
+    case '0_visitor':
+      return <VisitorForm />
+    case '1_registering':
+      return <UserForm />
+    case '2_logged':
+      return (
+        <Container>
+          <Box my={5}>
+            <Heading mb={3}>{`Olá, ${user.name}`}</Heading>
+            <Flex gap={2}>
+              <Button colorScheme="teal" onClick={handleEdit}>
+                Editar cadastro
+              </Button>
+              <Button onClick={handleLogOut}>Sair</Button>
+            </Flex>
+          </Box>
+        </Container>
+      )
+    default:
+      return null
+  }
 }

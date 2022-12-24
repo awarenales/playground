@@ -1,8 +1,8 @@
-import { Link } from "@chakra-ui/react"
-import Head from "next/head"
-import NextLink from "next/link"
+import { Link } from '@chakra-ui/react'
+import Head from 'next/head'
+import NextLink from 'next/link'
 
-import styles from "styles/Home.module.css"
+import styles from 'styles/Home.module.css'
 
 export default function Home() {
   return (

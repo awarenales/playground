@@ -1,0 +1,15 @@
+export const mapValueToLabel: Record<string, string> = {
+  name: 'Nome',
+  email: 'E-mail',
+  country: 'País',
+  state: 'Estado',
+  city: 'Município',
+  cep: 'CEP',
+  street: 'Rua',
+  number: 'Número',
+  complement: 'Complemento',
+  cpf: 'CPF',
+  pis: 'PIS',
+  password: 'Senha',
+  username: 'Usuário',
+}
